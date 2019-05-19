@@ -56,6 +56,49 @@ void CreateField()
         }
     }
 }
+void Move(Direction dir)
+{
+    switch (dir) {
+    case up:
+        if (CurY > 0) {
+            Field[CurY][CurX] = Field[CurY - 1][CurX];
+            Field[CurY - 1][CurX] = 0;
+            CurY--;
+        }
+        break;
+    case down:
+        if (CurY < 3) {
+            Field[CurY][CurX] = Field[CurY + 1][CurX];
+            Field[CurY + 1][CurX] = 0;
+            CurY++;
+        }
+
+        break;
+    case right:
+        if (CurX < 3) {
+            Field[CurY][CurX] = Field[CurY][CurX + 1];
+            Field[CurY][CurX + 1] = 0;
+            CurX++;
+        }
+        break;
+    case left:
+        if (CurX > 0) {
+            Field[CurY][CurX] = Field[CurY][CurX - 1];
+            Field[CurY][CurX - 1] = 0;
+            CurX--;
+        }
+        break;
+    }
+}
+bool FieldIsCorrect()
+{
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++) {
+            if (Field[i][j] < Field[i][j - 1])
+                return false;
+        }
+    return true;
+}
 void coutArr()
 {
     clear();
@@ -73,6 +116,7 @@ int main()
     int exit = 0;
     exit += 1;
     int c;
+    int key;
     while (1) {
         clear();
         Menu();
@@ -81,7 +125,31 @@ int main()
             clear();
             CreateField();
             coutArr();
-            getch();
+            while (1) {
+                if (FieldIsCorrect()) {
+                    clear();
+                    printw("you win");
+                    getch();
+                    endwin();
+                    return 0;
+                }
+                key = getch();
+                switch (key) {
+                case 119:
+                    Move(up);
+                    break;
+                case 115:
+                    Move(down);
+                    break;
+                case 100:
+                    Move(right);
+                    break;
+                case 97:
+                    Move(left);
+                    break;
+                }
+                coutArr();
+            }
         }
         if (c == 50) {
             clear();
