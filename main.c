@@ -90,6 +90,15 @@ void Move(Direction dir)
         break;
     }
 }
+bool FieldIsCorrect()
+{
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++) {
+            if (Field[i][j] < Field[i][j - 1])
+                return false;
+        }
+    return true;
+}
 void coutArr()
 {
     clear();
@@ -117,6 +126,13 @@ int main()
             CreateField();
             coutArr();
             while (1) {
+                if (FieldIsCorrect()) {
+                    clear();
+                    printw("you win");
+                    getch();
+                    endwin();
+                    return 0;
+                }
                 key = getch();
                 switch (key) {
                 case 119:
