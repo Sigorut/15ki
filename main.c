@@ -17,6 +17,56 @@ void Autors()
 {
     printw("Its me\n");
 }
+void CreateField()
+{
+    u_short arr[16], n, i, buf;
+    bool flag = false;
+    srand(time(NULL));
+    for (n = 0; n < 16;) {
+        flag = false;
+        buf = rand() % 16 + 1;
+        for (i = 0; i < n; i++) {
+            if (arr[i] == buf) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            arr[n] = buf;
+            n++;
+        }
+    }
+    int z = 0;
+    for (n = 0; n < 4; n++) {
+        for (i = 0; i < 4; i++) {
+            Field[n][i] = z;
+            z++;
+            // Field[n][i]=arr[k]-1
+            // k++
+        }
+    }
+    Field[0][0] = 1;
+    Field[0][1] = 0;
+    for (n = 0; n < 4; n++) {
+        for (i = 0; i < 4; i++) {
+            if (Field[n][i] == 0) {
+                CurX = i;
+                CurY = n;
+            }
+        }
+    }
+}
+void coutArr()
+{
+    clear();
+    for (int i = 0; i < 4; i++) {
+        printw("|");
+        for (int j = 0; j < 4; j++) {
+            printw("%4d |", Field[i][j]);
+        }
+        printw("\n\n");
+    }
+}
 int main()
 {
     initscr();
@@ -29,6 +79,9 @@ int main()
         c = getch();
         if (c == 49) {
             clear();
+            CreateField();
+            coutArr();
+            getch();
         }
         if (c == 50) {
             clear();
