@@ -56,6 +56,17 @@ void CreateField()
         }
     }
 }
+void coutArr()
+{
+    clear();
+    for (int i = 0; i < 4; i++) {
+        printw("|");
+        for (int j = 0; j < 4; j++) {
+            printw("%4d |", Field[i][j]);
+        }
+        printw("\n\n");
+    }
+}
 int main()
 {
     initscr();
@@ -68,6 +79,9 @@ int main()
         c = getch();
         if (c == 49) {
             clear();
+            CreateField();
+            coutArr();
+            getch();
         }
         if (c == 50) {
             clear();
