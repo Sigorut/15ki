@@ -9,9 +9,9 @@ u_short Field[4][4];
 u_short CurX, CurY;
 void Menu()
 {
-    printw("1.New game \n");
-    printw("2. Autors\n");
-    printw("3.Exit \n");
+    printw(" 1.New game \n");
+    printw("2.Autors\n");
+    printw("   3.Exit   \n");
 }
 void Autors()
 {
@@ -19,7 +19,7 @@ void Autors()
 }
 void CreateField()
 {
-    u_short arr[16], n, i, buf;
+    u_short arr[16], n, i, buf, k = 0;
     bool flag = false;
     srand(time(NULL));
     for (n = 0; n < 16;) {
@@ -36,17 +36,17 @@ void CreateField()
             n++;
         }
     }
-    int z = 0;
+    // int z = 0;
     for (n = 0; n < 4; n++) {
         for (i = 0; i < 4; i++) {
-            Field[n][i] = z;
-            z++;
-            // Field[n][i]=arr[k]-1
-            // k++
+            // Field[n][i] = z;
+            // z++;
+            Field[n][i] = arr[k] - 1;
+            k++;
         }
     }
-    Field[0][0] = 1;
-    Field[0][1] = 0;
+    // Field[0][0] = 1;
+    // Field[0][1] = 0;
     for (n = 0; n < 4; n++) {
         for (i = 0; i < 4; i++) {
             if (Field[n][i] == 0) {
@@ -146,6 +146,9 @@ int main()
                     break;
                 case 97:
                     Move(left);
+                    break;
+                case 122:
+                    CreateField();
                     break;
                 }
                 coutArr();
