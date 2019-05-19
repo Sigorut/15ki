@@ -10,8 +10,8 @@ u_short CurX, CurY;
 void Menu()
 {
     printw(" 1.New game \n");
-    printw("2.Autors\n");
-    printw("   3.Exit   \n");
+    printw(" 2.Autors\n");
+    printw(" 3.Exit   \n");
 }
 void Autors()
 {
@@ -109,10 +109,14 @@ void coutArr()
         }
         printw("\n\n");
     }
+    printw("To exit, press x\n");
+    printw("To control use wasd\n");
+    printw("Press z for a new game\n");
 }
 int main()
 {
     initscr();
+
     int exit = 0;
     exit += 1;
     int c;
@@ -128,7 +132,7 @@ int main()
             while (1) {
                 if (FieldIsCorrect()) {
                     clear();
-                    printw("you win");
+                    printw("You win");
                     getch();
                     endwin();
                     return 0;
@@ -150,6 +154,9 @@ int main()
                 case 122:
                     CreateField();
                     break;
+                case 120:
+                    endwin();
+                    return 0;
                 }
                 coutArr();
             }
