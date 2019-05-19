@@ -13,18 +13,27 @@ void Menu()
     printw("2. Autors\n");
     printw("3.Exit \n");
 }
+void Autors()
+{
+    printw("Its me\n");
+}
 int main()
 {
     initscr();
     int exit = 0;
     exit += 1;
     int c;
-    Menu();
     while (1) {
+        clear();
+        Menu();
         c = getch();
         if (c == 49) {
+            clear();
         }
         if (c == 50) {
+            clear();
+            Autors();
+            getch();
         }
         if (c == 51) {
             endwin();
