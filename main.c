@@ -19,36 +19,17 @@ void Autors()
 }
 void CreateField()
 {
-    u_short arr[16], n, i, buf, k = 0;
-    bool flag = false;
-    srand(time(NULL));
-    for (n = 0; n < 16;) {
-        flag = false;
-        buf = rand() % 16 + 1;
-        for (i = 0; i < n; i++) {
-            if (arr[i] == buf) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
-            arr[n] = buf;
-            n++;
-        }
-    }
-    // int z = 0;
+    u_short n, i;
+    int z = 0;
     for (n = 0; n < 4; n++) {
         for (i = 0; i < 4; i++) {
-            // Field[n][i] = z;
-            // z++;
-            Field[n][i] = arr[k] - 1;
-            k++;
+            Field[n][i] = z;
+            z++;
         }
     }
-    // Field[0][0] = 1;
-    // Field[0][1] = 0;
-    for (n = 0; n < 4; n++) {
-        for (i = 0; i < 4; i++) {
+
+    for (int n = 0; n < 4; n++) {
+        for (int i = 0; i < 4; i++) {
             if (Field[n][i] == 0) {
                 CurX = i;
                 CurY = n;
@@ -127,7 +108,19 @@ int main()
         c = getch();
         if (c == 49) {
             clear();
+            int dv;
             CreateField();
+            for (int i = 0; i < 10000; i++) {
+                dv = rand() % 4 + 1;
+                if (dv == 1)
+                    Move(up);
+                if (dv == 2)
+                    Move(down);
+                if (dv == 3)
+                    Move(right);
+                if (dv == 4)
+                    Move(left);
+            }
             coutArr();
             while (1) {
                 if (FieldIsCorrect()) {
