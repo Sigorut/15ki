@@ -20,6 +20,8 @@ void Menu()
 }
 void Autors()
 {
+    attron(COLOR_PAIR(1));
+    move(15, 50);
     printw("Its me\n");
 }
 void CreateField()
@@ -87,7 +89,7 @@ bool FieldIsCorrect()
 }
 void coutArr()
 {
-    int x = 20, y = 5;
+    int x = 20, y = 4;
     clear();
     for (int i = 0; i < 4; i++) {
         x = 40;
@@ -103,18 +105,26 @@ void coutArr()
                 attroff(A_STANDOUT);
             } else {
                 attroff(A_STANDOUT);
-                attron(COLOR_PAIR(1));
+                attron(COLOR_PAIR(3));
                 printw("%4d", Field[i][j]);
+                attroff(COLOR_PAIR(3));
             }
             x += 10;
         }
     }
-    move(y + 1, 40);
-    printw("To exit, press x");
+    attron(COLOR_PAIR(3));
+    attron(A_STANDOUT);
     move(y + 2, 40);
-    printw("To control use wasd");
+    printw("To exit, press x");
+    attroff(COLOR_PAIR(3));
+    attron(COLOR_PAIR(4));
     move(y + 3, 40);
+    printw("To control use wasd");
+    move(y + 4, 40);
+    attroff(COLOR_PAIR(3));
+    attron(COLOR_PAIR(5));
     printw("Press z for a new game");
+    attroff(A_STANDOUT | COLOR_PAIR(5));
 }
 int main()
 {
@@ -122,6 +132,9 @@ int main()
     start_color();
     init_pair(1, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(3, COLOR_GREEN, COLOR_BLACK);
+    init_pair(4, COLOR_BLUE, COLOR_BLACK);
+    init_pair(5, COLOR_RED, COLOR_BLACK);
     int exit = 0;
     exit += 1;
     int c;
@@ -149,7 +162,10 @@ int main()
             while (1) {
                 if (FieldIsCorrect()) {
                     clear();
+                    attron(COLOR_PAIR(3));
+                    move(15, 50);
                     printw("You win");
+                    attroff(COLOR_PAIR(3));
                     getch();
                     endwin();
                     return 0;
