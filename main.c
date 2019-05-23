@@ -9,9 +9,14 @@ u_short Field[4][4];
 u_short CurX, CurY;
 void Menu()
 {
-    printw(" 1.New game \n");
-    printw(" 2.Autors\n");
-    printw(" 3.Exit   \n");
+    attron(A_STANDOUT | A_BOLD | A_BLINK);
+    attron(COLOR_PAIR(1));
+    move(10, 50);
+    printw(" 1.New game ");
+    move(15, 50);
+    printw(" 2.Autors");
+    move(20, 50);
+    printw(" 3.Exit   ");
 }
 void Autors()
 {
@@ -82,22 +87,41 @@ bool FieldIsCorrect()
 }
 void coutArr()
 {
+    int x = 20, y = 5;
     clear();
     for (int i = 0; i < 4; i++) {
-        printw("|");
+        x = 40;
+        y += 4;
         for (int j = 0; j < 4; j++) {
-            printw("%4d |", Field[i][j]);
+            move(y, x);
+            if (Field[i][j] == 0) {
+                attron(COLOR_PAIR(2));
+
+                attron(A_STANDOUT);
+                printw("%4d", Field[i][j]);
+                attroff(COLOR_PAIR(2));
+                attroff(A_STANDOUT);
+            } else {
+                attroff(A_STANDOUT);
+                attron(COLOR_PAIR(1));
+                printw("%4d", Field[i][j]);
+            }
+            x += 10;
         }
-        printw("\n\n");
     }
-    printw("To exit, press x\n");
-    printw("To control use wasd\n");
-    printw("Press z for a new game\n");
+    move(y + 1, 40);
+    printw("To exit, press x");
+    move(y + 2, 40);
+    printw("To control use wasd");
+    move(y + 3, 40);
+    printw("Press z for a new game");
 }
 int main()
 {
     initscr();
-
+    start_color();
+    init_pair(1, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(2, COLOR_YELLOW, COLOR_BLACK);
     int exit = 0;
     exit += 1;
     int c;
@@ -146,6 +170,17 @@ int main()
                     break;
                 case 122:
                     CreateField();
+                    for (int i = 0; i < 10000; i++) {
+                        dv = rand() % 4 + 1;
+                        if (dv == 1)
+                            Move(up);
+                        if (dv == 2)
+                            Move(down);
+                        if (dv == 3)
+                            Move(right);
+                        if (dv == 4)
+                            Move(left);
+                    }
                     break;
                 case 120:
                     endwin();
