@@ -22,7 +22,9 @@ void Autors()
 {
     attron(COLOR_PAIR(1));
     move(15, 50);
-    printw("Its me\n");
+    printw("Nikita Lobakin");
+    move(20, 50);
+    printw("Perelomov Michael");
 }
 void CreateField()
 {
@@ -34,15 +36,8 @@ void CreateField()
             z++;
         }
     }
-
-    for (int n = 0; n < 4; n++) {
-        for (int i = 0; i < 4; i++) {
-            if (Field[n][i] == 0) {
-                CurX = i;
-                CurY = n;
-            }
-        }
-    }
+    CurX = 0;
+    CurY = 0;
 }
 void Move(Direction dir)
 {
