@@ -24,6 +24,7 @@ int main()
         c = getch();
         if (c == 49) {
             clear();
+            LvlGame();
             CreateField();
             RandomField();
             CoutField();

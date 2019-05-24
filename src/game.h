@@ -6,6 +6,7 @@
 #include <time.h>
 
 typedef enum Direction { up, down, right, left } Direction;
+void LvlGame();
 void CreateField();
 void Move(Direction dir);
 bool FieldIsCorrect();
