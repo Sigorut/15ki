@@ -88,11 +88,12 @@ void CoutField()
         for (int j = 0; j < 4; j++) {
             move(y, x);
             if (Field[i][j] == 0) {
+                printw("   ");
                 attron(COLOR_PAIR(2));
 
                 attron(A_STANDOUT);
-                printw("%4d", Field[i][j]);
-                attroff(COLOR_PAIR(2));
+                printw("%d", Field[i][j]);
+                attroff(COLOR_PAIR(5));
                 attroff(A_STANDOUT);
             } else {
                 attroff(A_STANDOUT);
