@@ -82,7 +82,22 @@ bool FieldIsCorrect()
         }
     return true;
 }
-void coutArr()
+void RandomField()
+{
+    int dv;
+    for (int i = 0; i < 10000; i++) {
+        dv = rand() % 4 + 1;
+        if (dv == 1)
+            Move(up);
+        if (dv == 2)
+            Move(down);
+        if (dv == 3)
+            Move(right);
+        if (dv == 4)
+            Move(left);
+    }
+}
+void CoutField()
 {
     int x = 20, y = 4;
     clear();
@@ -140,20 +155,9 @@ int main()
         c = getch();
         if (c == 49) {
             clear();
-            int dv;
             CreateField();
-            for (int i = 0; i < 10000; i++) {
-                dv = rand() % 4 + 1;
-                if (dv == 1)
-                    Move(up);
-                if (dv == 2)
-                    Move(down);
-                if (dv == 3)
-                    Move(right);
-                if (dv == 4)
-                    Move(left);
-            }
-            coutArr();
+            RandomField();
+            CoutField();
             while (1) {
                 if (FieldIsCorrect()) {
                     clear();
@@ -181,23 +185,13 @@ int main()
                     break;
                 case 122:
                     CreateField();
-                    for (int i = 0; i < 10000; i++) {
-                        dv = rand() % 4 + 1;
-                        if (dv == 1)
-                            Move(up);
-                        if (dv == 2)
-                            Move(down);
-                        if (dv == 3)
-                            Move(right);
-                        if (dv == 4)
-                            Move(left);
-                    }
+                    RandomField();
                     break;
                 case 120:
                     endwin();
                     return 0;
                 }
-                coutArr();
+                CoutField();
             }
         }
         if (c == 50) {
