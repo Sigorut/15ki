@@ -2,7 +2,7 @@ dist: trusty
 sudo: required
 
 language: cpp
-compiler: gpp
+compiler: g++
 
 dist: xenial
 
