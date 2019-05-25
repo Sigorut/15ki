@@ -46,4 +46,13 @@ CTEST(FieldIsCorrect_4x4, result_test)
     const int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
+CTEST(FieldIsCorrect_5x5, result_test)
+{
+    int rg = 50;
+    LvlGame(rg);
+    CreateField();
+    const int result = FieldIsCorrect();
+    const int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
 
