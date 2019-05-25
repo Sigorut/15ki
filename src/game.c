@@ -27,7 +27,7 @@ int LvlGame(int rg)
     }
     return ch;
 }
-void CreateField()
+int CreateField()
 {
     u_short n, i, res;
     int z = 0;
@@ -48,9 +48,10 @@ void CreateField()
                 res = 1;
             }
     }
-    i += res;
+
     CurX = 0;
     CurY = 0;
+    return res;
 }
 void Move(Direction dir)
 {

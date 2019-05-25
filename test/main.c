@@ -21,4 +21,11 @@ CTEST(correct_test2, result_test)
     const int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
-
+CTEST(correct_4x4, result_test)
+{
+    int rg = 49;
+    LvlGame(rg);
+    const int result = CreateField();
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}

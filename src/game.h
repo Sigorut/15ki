@@ -7,7 +7,7 @@
 
 typedef enum Direction { up, down, right, left } Direction;
 int LvlGame(int rg);
-void CreateField();
+int CreateField();
 void Move(Direction dir);
 bool FieldIsCorrect();
 void RandomField();
