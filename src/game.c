@@ -28,13 +28,14 @@ void LvlGame()
 }
 void CreateField()
 {
-    u_short n, i;
+    u_short n, i, res;
     int z = 0;
     if (ch == 0) {
         for (n = 0; n < 4; n++) {
             for (i = 0; i < 4; i++) {
                 Field[n][i] = z;
                 z++;
+                res = 0;
             }
         }
     }
@@ -43,6 +44,7 @@ void CreateField()
             for (i = 0; i < 5; i++) {
                 Field1[n][i] = z;
                 z++;
+                res = 1;
             }
     }
     CurX = 0;
