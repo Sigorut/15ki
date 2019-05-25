@@ -1,4 +1,5 @@
 #include "game.h"
+#include "menu.h"
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,15 +11,19 @@ u_short CurX, CurY;
 int ch = 100;
 void LvlGame()
 {
-    int rg;
-    rg = getch();
-    switch (rg) {
-    case 49:
-        ch = 0;
-        break;
-    case 50:
-        ch = 1;
-        break;
+    int rg = 100;
+    move(100, 100);
+    while (1) {
+        rg = 0;
+        rg = getch();
+        clear();
+        Lvl();
+        if (rg == 49)
+            ch = 0;
+        if (rg == 50)
+            ch = 1;
+        if ((ch == 1) || (ch == 0))
+            break;
     }
 }
 void CreateField()
@@ -203,7 +208,7 @@ void CoutField()
     attron(COLOR_PAIR(3));
     attron(A_STANDOUT);
     move(y + 2, 40);
-    printw("ch= %d ", ch);
+    printw("Press x for a Exit");
     attroff(COLOR_PAIR(3));
     attron(COLOR_PAIR(4));
     move(y + 3, 40);
