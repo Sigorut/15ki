@@ -5,7 +5,7 @@
 
 void Menu()
 {
-    attron(A_STANDOUT | A_BOLD | A_BLINK);
+    attron(A_STANDOUT | A_BOLD);
     attron(COLOR_PAIR(1));
     move(10, 50);
     printw(" 1.New game ");

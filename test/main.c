@@ -14,3 +14,11 @@ CTEST(correct_test1, result_test)
     const int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
+CTEST(correct_test2, result_test)
+{
+    int rg = 49;
+    const int result = LvlGame(rg);
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
