@@ -9,15 +9,15 @@ typedef unsigned int u_int;
 u_short Field[4][4], Field1[5][5];
 u_short CurX, CurY;
 int ch = 100;
-void LvlGame()
+int LvlGame(int rg)
 {
-    int rg = 100;
     move(100, 100);
     while (1) {
-        rg = 0;
-        rg = getch();
-        clear();
-        Lvl();
+        if (rg == 100) {
+            rg = getch();
+            clear();
+            Lvl();
+        }
         if (rg == 49)
             ch = 0;
         if (rg == 50)
@@ -25,6 +25,7 @@ void LvlGame()
         if ((ch == 1) || (ch == 0))
             break;
     }
+    return ch;
 }
 void CreateField()
 {
@@ -47,6 +48,7 @@ void CreateField()
                 res = 1;
             }
     }
+    i += res;
     CurX = 0;
     CurY = 0;
 }

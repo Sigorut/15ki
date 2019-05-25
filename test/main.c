@@ -9,9 +9,8 @@ int main(int argc, const char** argv)
 }
 CTEST(correct_test1, result_test)
 {
-    ch = 0;
-    CreateField();
-    const int result = res;
-    const int expected = 0;
+    int rg = 50;
+    const int result = LvlGame(rg);
+    const int expected = 1;
     ASSERT_EQUAL(expected, result);
 }

@@ -17,6 +17,7 @@ int main()
     int exit = 0;
     exit += 1;
     int c;
+    int rg = 100;
     int key;
     while (1) {
         clear();
@@ -25,7 +26,7 @@ int main()
         if (c == 49) {
             clear();
             Lvl();
-            LvlGame();
+            LvlGame(rg);
             CreateField();
             RandomField();
             CoutField();
