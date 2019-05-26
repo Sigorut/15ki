@@ -11,7 +11,6 @@ u_short CurX, CurY;
 int ch = 100;
 int LvlGame(int rg)
 {
-    move(100, 100);
     while (1) {
         if (rg == 100) {
             rg = getch();
@@ -222,5 +221,7 @@ void CoutField()
     attroff(COLOR_PAIR(3));
     attron(COLOR_PAIR(5));
     printw("Press z for a new game");
+    move(y + 5, 40);
+    printw("Press Esc to return to the menu");
     attroff(A_STANDOUT | COLOR_PAIR(5));
 }

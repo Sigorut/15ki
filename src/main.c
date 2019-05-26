@@ -42,6 +42,8 @@ int main()
                     return 0;
                 }
                 key = getch();
+                if (key == 27)
+                    break;
                 switch (key) {
                 case 119:
                     Move(up);
