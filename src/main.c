@@ -38,8 +38,7 @@ int main()
                     printw("You win");
                     attroff(COLOR_PAIR(3));
                     getch();
-                    endwin();
-                    return 0;
+                    break;
                 }
                 key = getch();
                 if (key == 27)
